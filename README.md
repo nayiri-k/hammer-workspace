@@ -2,6 +2,12 @@
 
 ### VLSI Flow
 
+First create links to your Hammer repo and commercial CAD plugins (if using):
+    ln -s <path-to-hammer> hammer
+    ln -s <path-to-hammer-cadence-plugins> hammer-cadence-plugins
+    ln -s <path-to-hammer-mentor-plugins> hammer-mentor-plugins/
+    ln -s <path-to-hammer-synopsys-plugins> hammer-synopsys-plugins/
+
 Run the following commands:
     make syn
     make par
