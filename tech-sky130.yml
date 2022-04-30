@@ -1,0 +1,61 @@
+# Technology Setup
+# Technology used is Skywater
+vlsi.core.technology: sky130
+vlsi.core.node: 130
+
+technology.sky130:
+  sky130_nda: "/tools/commercial/skywater/swtech130/skywater-src-nda"
+  sky130A: "/tools/commercial/skywater/swtech130/local/sky130A"
+  openram_lib: "/tools/commercial/skywater/swtech130/local/sky130_sram_macros"
+  
+vlsi.core.max_threads: 4
+
+# Hammer will auto-generate a CPF for simple power designs; see hammer/src/hammer-vlsi/defaults.yml for more info
+vlsi.inputs.power_spec_mode: "auto"
+vlsi.inputs.power_spec_type: "cpf"
+
+vlsi.inputs:
+  # Supply voltages.
+  supplies:
+    power:  [ {name: "VDD", pin: "VDD"},
+              {name: "VPWR", pin: "VPWR", tie: "VDD"},
+              {name: "VPB", pin: "VPB" , tie: "VDD"}]
+    ground: [ {name: "VSS", pin: "VSS"},
+              {name: "VGND", pin: "VGND", tie: "VSS"},
+              {name: "VNB", pin: "VNB" , tie: "VSS"}]
+    VDD: "1.8 V"
+    GND: "0 V"
+
+# Power Straps
+par.power_straps_mode: generate
+par.generate_power_straps_method: by_tracks
+par.blockage_spacing: 2.0
+par.generate_power_straps_options:
+  by_tracks:
+    strap_layers:
+      - met2
+      - met3
+      - met4
+      - met5
+    pin_layers:
+      - met4
+      - met5
+    track_width: 6
+    track_width_met5: 2
+    track_spacing: 1
+    track_start: 10
+    track_start_met5: 1
+    power_utilization: 0.2
+    # power_utilization_met4: .5
+    power_utilization_met5: 1
+
+# Pin placement constraints
+vlsi.inputs.pin_mode: generated
+vlsi.inputs.pin.generate_mode: semi_auto
+vlsi.inputs.pin.assignments: [
+  {pins: "*", layers: ["met2", "met4"], side: "bottom"}
+]
+
+# Generate Make include to aid in flow 
+vlsi.core.build_system: make
+vlsi.core.max_threads: 32

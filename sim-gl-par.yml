@@ -1,0 +1,25 @@
+# Post-Place and Route Gate-Level Simulation Variables
+sim.inputs:
+  timing_annotated: true
+  level: "gl"
+  timescale: "1ns/100ps"
+  options: 
+    - "-notice"
+    - "-debug_access+nomemcbk+dmptf -debug_region+cell"
+    - "-line"
+    #- "+lint=all"
+    - "+v2k"
+    - "-debug"
+    - "+vcs+initreg+random"
+    - "+vcs+initreg+random"
+    - "+vcs+lic+wait"
+    - "+udpsched"
+    - "+neg_tchk"
+    #- "+sdfverbose"
+    - "-negdelay"
+    - "+evalorder"
+  defines: 
+    # sky130-specific defines, only for gl sims:
+    - "FUNCTIONAL"
+    - "UNIT_DELAY"
+  defines_meta: append

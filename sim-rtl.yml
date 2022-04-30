@@ -1,0 +1,11 @@
+# RTL Simulation Variables
+sim.inputs:
+  timescale: "1ns/1ps"
+  options:
+    - "-notice"
+    - "-line"
+    - "+lint=all,noVCDE"
+    - "+v2k"
+    - "-debug"
+    - "-sverilog"
+  

@@ -1,0 +1,5 @@
+env.yml
+build*
+*log
+hammer
+hammer-*-plugins

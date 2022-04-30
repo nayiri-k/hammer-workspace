@@ -1,0 +1,19 @@
+# Post-Synthesis Gate-Level Simulation Variables
+sim.inputs:
+  level: "gl"
+  timing_annotated: true
+  timescale: "1ns/1ps"
+  options:
+    - "-notice"
+    - "-line"
+    - "+lint=all"
+    - "+v2k"
+    - "-debug"
+    - "-debug_access+all"
+    - "+neg_tchk"
+    - "-sverilog"
+  defines: 
+    # sky130-specific defines, only for gl sims:
+    - "FUNCTIONAL"
+    - "UNIT_DELAY"
+  defines_meta: append

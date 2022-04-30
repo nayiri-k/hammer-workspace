@@ -1,0 +1,43 @@
+# Design-specific files for gcd module
+
+# Specify Global Variables
+gcd.verilogSrc: &VERILOG_SRC
+  "src/gcd.v"
+
+simClockPeriod :  &SIM_CLK_PERIOD "CLOCK_PERIOD=1.00"
+
+# Specify clock signals
+vlsi.inputs.clocks: [
+  {name: "clk", period: "10ns", uncertainty: "10ps"}
+]
+
+# RTL Simulation Variables
+sim.inputs:
+  input_files:
+    - *VERILOG_SRC
+    - "src/gcd_testbench.v"
+  top_module: "gcd_testbench"
+  tb_name: "gcd_testbench"
+  tb_dut: "gcd"
+  defines: 
+    - "CLOCK_PERIOD=1.00"
+
+# Synthesis Constraints
+synthesis.inputs:
+  top_module: "gcd"
+  input_files: 
+    - *VERILOG_SRC
+  
+# Placement Constraints
+vlsi.inputs.placement_constraints:
+  - path: "gcd"
+    type: "toplevel"
+    x: 0
+    y: 0
+    width: 200
+    height: 200
+    margins:
+      left: 10
+      right: 10
+      top: 10
+      bottom: 10
