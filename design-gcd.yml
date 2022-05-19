@@ -2,7 +2,7 @@
 
 # Specify Global Variables
 gcd.verilogSrc: &VERILOG_SRC
-  "src/gcd.v"
+  - "src/gcd.v"
 
 simClockPeriod :  &SIM_CLK_PERIOD "CLOCK_PERIOD=1.00"
 
@@ -14,7 +14,7 @@ vlsi.inputs.clocks: [
 # RTL Simulation Variables
 sim.inputs:
   input_files:
-    - *VERILOG_SRC
+    - "src/gcd.v"
     - "src/gcd_testbench.v"
   top_module: "gcd_testbench"
   tb_name: "gcd_testbench"
@@ -26,7 +26,7 @@ sim.inputs:
 synthesis.inputs:
   top_module: "gcd"
   input_files: 
-    - *VERILOG_SRC
+    *VERILOG_SRC
   
 # Placement Constraints
 vlsi.inputs.placement_constraints:
