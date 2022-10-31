@@ -17,6 +17,10 @@ Run this in every new terminal (or add to your `.bashrc` but use absolute paths 
 
 Alternatively, just run `source sourceme.sh` in this directory.
 
+If you get a `pyyaml not found. Set $HAMMER_PYYAML_PATH to pyyaml/lib3` error, either install the `pyyaml` package to your Python (e.g. use conda or another package manager), or use my python (uncomment this line from the `sourceme.sh` file): 
+    
+    export PATH=/users/nayiri/conda/envs/chipyard/bin:$PATH
+
 ## Machine-Specific Setup
 
 This repo is configured to work specifically on the BWRC servers. Here are the changes made:
