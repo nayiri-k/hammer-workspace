@@ -36,7 +36,8 @@ If using the Asap7 technology, in `tech-asap7.yml`:
     technology.asap7.tarball_dir: "/path/to/asap7"
 
 
-For the open-source EDA tools, either add to Yosys/OpenROAD to your PATH (ideally in your `.bashrc`), or uncomment the absolute paths to the tool binaries in the respective `tools-*.yml` files:
+For the open-source EDA tools, either add Yosys/OpenROAD to your PATH (ideally in your `.bashrc`), or uncomment the absolute paths to the tool binaries in the respective `tools-*.yml` files:
+    
     synthesis.yosys.yosys_bin: "yosys"
     # on BWRC (only on bwrcr720-3 machine):
     # synthesis.yosys.yosys_bin: "/usr/local/bin/yosys"
