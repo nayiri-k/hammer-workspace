@@ -1,33 +1,24 @@
 # Voltus options
 vlsi.core.power_tool: "voltus"
-vlsi.core.power_tool_path: ["/tools/B/nayiri/vlsi/hammer-cadence-plugins/power"]
+vlsi.core.power_tool_path: ["hammer-cadence-plugins/power"]
 vlsi.core.power_tool_path_meta: "append"
 power.voltus.version: "181"
 
 # Tool options. Replace with your tool plugin of choice.
 # Genus options
 vlsi.core.synthesis_tool: "genus"
-vlsi.core.synthesis_tool_path: ["/tools/B/nayiri/vlsi/hammer-cadence-plugins/synthesis"] 
+vlsi.core.synthesis_tool_path: ["hammer-cadence-plugins/synthesis"] 
 vlsi.core.synthesis_tool_path_meta: "append"
 synthesis.genus.version: "1813"
 
-# Yosys options
-# vlsi.core.synthesis_tool: "yosys"
-# vlsi.core.synthesis_tool_path: ["/tools/B/nayiri/openroad/hammer/src/hammer-vlsi/synthesis/"] 
-# vlsi.core.synthesis_tool_path_meta: "append"
-
-# Innovus options
-# vlsi.core.par_tool: "innovus"
-# vlsi.core.par_tool_path: ["/tools/B/nayiri/vlsi/hammer-cadence-plugins/par"]
-# vlsi.core.par_tool_path_meta: "append"
-# par.innovus.version: "191"
-# par.innovus.design_flow_effort: "standard"
-# par.inputs.gds_merge: true
-
 # OpenROAD options
 vlsi.core.par_tool: "openroad"
-vlsi.core.par_tool_path: ["/tools/B/nayiri/openroad/hammer/src/hammer-vlsi/par"]
+vlsi.core.par_tool_path: ["hammer/src/hammer-vlsi/par"]
 vlsi.core.par_tool_path_meta: "append"
+par.openroad.openroad_bin: "openroad"  
+# on BWRC:
+# par.openroad.openroad_bin: "/tools/B/tools/OpenROAD/OpenROAD_20221028/local/bin/openroad"
+par.openroad.create_archive_mode: none
 
 # Calibre options
 vlsi.core.drc_tool: "calibre"

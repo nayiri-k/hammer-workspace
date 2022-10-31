@@ -4,9 +4,10 @@ vlsi.core.technology: sky130
 vlsi.core.node: 130
 
 technology.sky130:
+  sky130B: "/tools/commercial/skywater/local/sky130B"
+  openram_lib: "/tools/commercial/skywater/local/sky130_sram_macros"
+  # Optional
   sky130_nda: "/tools/commercial/skywater/swtech130/skywater-src-nda"
-  sky130A: "/tools/commercial/skywater/swtech130/local/sky130A"
-  openram_lib: "/tools/commercial/skywater/swtech130/local/sky130_sram_macros"
   
 vlsi.core.max_threads: 4
 
@@ -47,13 +48,13 @@ par.generate_power_straps_options:
     track_start_met5: 1
     power_utilization: 0.2
     # power_utilization_met4: .5
-    power_utilization_met5: 1
+    power_utilization_met5: .5
 
 # Pin placement constraints
 vlsi.inputs.pin_mode: generated
 vlsi.inputs.pin.generate_mode: semi_auto
 vlsi.inputs.pin.assignments: [
-  {pins: "*", layers: ["met2", "met4"], side: "bottom"}
+  {pins: "*", layers: ["met2", "met4"], side: "none"}
 ]
 
 # Generate Make include to aid in flow 

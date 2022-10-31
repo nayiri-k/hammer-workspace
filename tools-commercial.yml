@@ -13,7 +13,7 @@ synthesis.genus.version: "1813"
 
 # Yosys options
 # vlsi.core.synthesis_tool: "yosys"
-# vlsi.core.synthesis_tool_path: ["/tools/B/nayiri/openroad/hammer/src/hammer-vlsi/synthesis/"] 
+# vlsi.core.synthesis_tool_path: ["hammer/src/hammer-vlsi/synthesis/"] 
 # vlsi.core.synthesis_tool_path_meta: "append"
 
 # Innovus options
@@ -26,7 +26,7 @@ par.inputs.gds_merge: true
 
 # OpenROAD options
 # vlsi.core.par_tool: "openroad"
-# vlsi.core.par_tool_path: ["/tools/B/nayiri/openroad/hammer/src/hammer-vlsi/par"]
+# vlsi.core.par_tool_path: ["hammer/src/hammer-vlsi/par"]
 # vlsi.core.par_tool_path_meta: "append"
 
 # Calibre options

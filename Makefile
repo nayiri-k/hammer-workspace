@@ -15,28 +15,30 @@ hammer_dir=${HAMMER_HOME}
 #########################################################################################
 sim_name            ?= vcs # needed for GenerateSimFiles, but is unused
 tech_name           ?= sky130
-tools_name			?= commercial
-tech_dir            ?= $(SKYWATER_HOME)
+tools_name          ?= commercial
+tech_dir            ?= $(if $(filter $(tech_name),sky130 asap7 nangate45),\
+                        $(vlsi_dir)/hammer/src/hammer-vlsi/technology/$(tech_name), \
+                        $(vlsi_dir)/hammer-$(tech_name)-plugin/$(tech_name))
 
-SMEMS_COMP         ?= $(tech_dir)/sram-compiler.json
-SMEMS_CACHE        ?= $(tech_dir)/sram-cache.json
-SMEMS_HAMMER       ?= $(hammer_dir)/src/hammer-vlsi/technology/$(tech_name)sram-cache.json
+SMEMS_COMP          ?= $(tech_dir)/sram-compiler.json
+SMEMS_CACHE         ?= $(tech_dir)/sram-cache.json
+SMEMS_HAMMER        ?= $(hammer_dir)/src/hammer-vlsi/technology/$(tech_name)sram-cache.json
 ifeq ($(tech_name),asap7)
-	MACROCOMPILER_MODE ?= --mode synflops
+    MACROCOMPILER_MODE ?= --mode synflops
 else
-	MACROCOMPILER_MODE ?= -l $(SMEMS_CACHE) -hir $(SMEMS_HAMMER)
+    MACROCOMPILER_MODE ?= -l $(SMEMS_CACHE) -hir $(SMEMS_HAMMER)
 endif
 
 
 OBJ_DIR             ?= $(vlsi_dir)/build-$(tech_name)-$(tools_name)
-ENV_YML             ?= $(vlsi_dir)/env.yml
-TOOLS_CONF			?= tools-$(tools_name).yml
-TECH_CONF			?= tech-$(tech_name).yml
+ENV_YML             ?= $(vlsi_dir)/bwrc-env.yml
+TOOLS_CONF          ?= tools-$(tools_name).yml
+TECH_CONF           ?= tech-$(tech_name).yml
 
-DESIGN_CONF     	?= $(vlsi_dir)/design-gcd.yml
-SIM_RTL_CONF    	?= $(vlsi_dir)/sim-rtl.yml
-SIM_GL_SYN_CONF 	?= $(vlsi_dir)/sim-gl-syn.yml
-SIM_GL_PAR_CONF 	?= $(vlsi_dir)/sim-gl-par.yml
+DESIGN_CONF         ?= $(vlsi_dir)/design-gcd.yml
+SIM_RTL_CONF        ?= $(vlsi_dir)/sim-rtl.yml
+SIM_GL_SYN_CONF     ?= $(vlsi_dir)/sim-gl-syn.yml
+SIM_GL_PAR_CONF     ?= $(vlsi_dir)/sim-gl-par.yml
 
 SRAM_CONF           ?= $(OBJ_DIR)/sram_generator-output.json
 OUTPUT_SYN_DB       ?= $(OBJ_DIR)/syn-rundir/syn-output-full.json
@@ -46,7 +48,7 @@ INPUT_DRC_DB        ?= $(OBJ_DIR)/drc-input.json
 INPUT_LVS_DB        ?= $(OBJ_DIR)/lvs-input.json
 INPUT_SIM_GL_SYN_DB ?= $(OBJ_DIR)/syn-to-sim_input.json
 INPUT_SIM_GL_PAR_DB ?= $(OBJ_DIR)/par-to-sim_input.json
-OUTPUT_SIM_DB		?= $(OBJ_DIR)/sim-rundir/sim-output-full.json
+OUTPUT_SIM_DB       ?= $(OBJ_DIR)/sim-rundir/sim-output-full.json
 INPUT_PWR_SIM_GL_DB ?= $(OBJ_DIR)/sim-to-power_input.json
 INPUT_PWR_PAR_DB    ?= $(OBJ_DIR)/par-to-power_input.json
 HAMMER_EXEC         ?= hammer-vlsi
